@@ -1,0 +1,24 @@
+
+@import url('https://fonts.googleapis.com/css?family=Teko:700&display=swap');
+
+  .h1 {
+    color: #2d9da9;
+    margin: 0;
+    padding-bottom: 6rem;
+    grid-column: 1;
+    grid-row: 1;
+    z-index: 1;
+    font-family: 'Teko', sans-serif;
+    font-size: 10rem;
+    animation: glow 2s ease-in-out infinite alternate;
+    text-align: center;
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 10px #2d9da9;
+    }
+    to {
+      text-shadow: 0 0 20px #34b3c1, 0 0 5px #4dbbc7;
+    }
+  }

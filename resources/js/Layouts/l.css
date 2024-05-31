@@ -1,0 +1,26 @@
+/* 
+@font-face {
+    font-family: 'ProductSans';
+    src: url('../Fonts/ProductSans-Regular.ttf') format('truetype');
+}
+*{
+    font-family: ProductSans;
+} */
+.blur-background {
+    filter: blur(2px);
+    transition: filter 0.3s ease; /* Add transition for blur */
+}
+
+.flex-1 {
+    transition: margin-left 0.3s ease; /* Add transition for margin-left */
+}
+
+
+
+.f1 {
+    transition: transform 0.5s ease, backdrop-filter 0.5s ease, opacity 0.5s ease;
+
+    backdrop-filter: blur(50px);
+}
+
+
