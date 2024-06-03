@@ -72,7 +72,7 @@ export default function AdminLayout({ user, children }) {
                                 </svg>
                             </button>
                             <a href={route('home')}
-                            className="flex ms-2 md:me-24">
+                                className="flex ms-2 md:me-24">
                                 {/* <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 me-3" alt="FlowBite Logo" /> */}
                                 <span className="self-center text-xl font-semibold sm:text-2xl font-bold flex-shrink-0 text-creeper text-lg">CubiceHost</span>
                             </a>
@@ -208,6 +208,9 @@ export default function AdminLayout({ user, children }) {
                                 <span className="flex-1 ms-3 whitespace-nowrap">Contact Us</span>
                             </a>
                         </li>
+
+
+
                         <li>
                             <a href={route('about')}
                                 className={`flex items-center p-2 mt-4 rounded-lg  hover:text-creeper  ${isDarkMode ? 'text-gray-100' : 'text-gray-900 '}  group`}>
@@ -217,7 +220,7 @@ export default function AdminLayout({ user, children }) {
                         </li>
 
                         {
-                            isAuth ? (
+                            isAuth && user.hasServer ? (
                                 <>
                                     <li>
                                         <a href={route('console')}
@@ -227,7 +230,7 @@ export default function AdminLayout({ user, children }) {
                                         </a>
                                     </li>
 
-                                    {user.hasServer ? (
+                                    {/* {user.hasServer ? (
                                         <li>
                                             <a href={route('serverinfo')}
                                                 className={`flex items-center p-2 mt-4 rounded-lg  hover:text-creeper  ${isDarkMode ? 'text-gray-100' : 'text-gray-900 '}  group`}>
@@ -235,7 +238,7 @@ export default function AdminLayout({ user, children }) {
                                                 <span className="flex-1 ms-3 whitespace-nowrap">Server</span>
                                             </a>
                                         </li>
-                                    ) : (<></>)}
+                                    ) : (<></>)} */}
 
                                 </>
                             ) : (<></>)
@@ -284,7 +287,7 @@ export default function AdminLayout({ user, children }) {
                             <a href='/download'
                                 // type="submit"
                                 className="flex block ml-2 p-2 text-center text-white bg-teal-600 border border-teal-600 rounded hover:bg-transparent hover:text-teal-500 transition uppercase font-roboto font-medium"
-                                // className={`flex ms-3 p-2 rounded ${isDarkMode ? 'bg-gray-600 text-white p-2 border border-gray-400' : 'border border-gray-600 bg-gray-200 text-gray-900'}`}
+                            // className={`flex ms-3 p-2 rounded ${isDarkMode ? 'bg-gray-600 text-white p-2 border border-gray-400' : 'border border-gray-600 bg-gray-200 text-gray-900'}`}
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" className={`mr-1 w-6 h-6 group-hover:text-creeper ${isDarkMode ? 'text-gray-100' : 'text-gray-900 '}`} height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" /></svg>
 

@@ -1,32 +1,57 @@
 import AdminLayout from '@/Layouts/AdminLayout';
 import { Head } from '@inertiajs/react';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { DarkModeContext } from '@/Layouts/DarkModeProvider';
 
 export default function ServerInfo({ auth }) {
     const { isDarkMode } = useContext(DarkModeContext);
-const percentage = 45
+    const [bedrockPort, setBedrockPort] = useState(null);
+    const [javaPort, setJavaPort] = useState(null);
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch(`http://158.179.219.229:5000/get_ports?username=${auth.user.name.toLowerCase()}`, {
+                method: 'GET',
+            });
+
+            const data = await response.json();
+
+            if (data && data.ports) {
+                setBedrockPort(data.ports["19132/tcp"] || data.ports["19132/udp"]);
+                setJavaPort(data.ports["25565/tcp"]);
+            } else {
+                console.error('Invalid data structure received:', data);
+            }
+        } catch (error) {
+            console.error('Error fetching ports:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, [auth.user.name]);
+
+
     return (
-        <AdminLayout
-            user={auth.user}
-        >
-            <Head title="Serverinfo" />
 
+        <section className={`${isDarkMode ? 'bg-slate-800 text-gray-50' : 'bg-white text-black'} p-4 rounded-lg shadow-md`} id="contact">
+            <div className="container mx-auto">
+                <h2 className="text-xl font-bold mb-2">Server Status</h2>
+                {bedrockPort && (
+                    <p className="bg-gray-200 dark:bg-gray-700 text-sm rounded-full px-4 py-2">
+                        Bedrock: 158.179.219.229:{bedrockPort}
+                    </p>
+                )}
+                {javaPort && (
+                    <p className="bg-gray-200 dark:bg-gray-700 text-sm rounded-full px-4 py-2 mt-2">
+                        Java: 158.179.219.229:{javaPort}
+                    </p>
+                )}
+            </div>
+        </section>
 
-            <section className={`${isDarkMode ? 'bg-slate-800 text-gray-50' : 'bg-white text-black'}`} id="contact">
-                <h1>Ram Usage</h1><br />
-                <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700">
-                    <div
-                        className="bg-green-500 text-xs font-medium text-green-100 text-center p-0.5 leading-none rounded-full"
-                        style={{ width: `${percentage}%` }}
-                    >
-                        {percentage}%
-                    </div>
-                </div>
-            </section>
-
-
-
-        </AdminLayout>
     );
 }
+
+
+

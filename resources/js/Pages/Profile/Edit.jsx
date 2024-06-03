@@ -8,11 +8,10 @@ import { useContext } from 'react';
 import { DarkModeContext } from '@/Layouts/DarkModeProvider';
 import TerminateServer from './Partials/TerminateServer';
 
-
-
 export default function Edit({ auth, mustVerifyEmail, status }) {
     const { isDarkMode } = useContext(DarkModeContext);
-    console.log(auth.user.hasServer)
+    console.log(auth.user.hasServer);
+
     return (
         <AdminLayout
             user={auth.user}
@@ -23,8 +22,7 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                     <div className={`${isDarkMode ? 'text-white border border-gray-500' : ' text-gray-900'} shadow px-6 py-7 rounded-lg overflow-hidden`}>
-
-                        {!auth.user.hasServer ? <GetServer className="max-w-3xl mx-auto" /> : <TerminateServer className="max-w-3xl mx-auto" />}
+                        {!auth.user.hasServer ? <GetServer auth={auth} className="max-w-3xl mx-auto" /> : <TerminateServer auth={auth} className="max-w-3xl mx-auto" />}
                     </div>
                     <div className={`${isDarkMode ? 'text-white border border-gray-500' : ' text-gray-900'} shadow px-6 py-7 rounded-lg overflow-hidden`}>
                         <UpdateProfileInformationForm

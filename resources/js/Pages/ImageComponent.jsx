@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import offlineImage from './imges/about.jpg';
+import offlineImage from './imges/offline.png';
 
-const ImageComponent = () => {
+const ImageComponent = ({ auth }) => {
   const [isActive, setIsActive] = useState(false);
   const [progress, setProgress] = useState(0);
 
@@ -18,7 +18,7 @@ const ImageComponent = () => {
             setProgress(0);
 
             // Execute the fetch request after progress completes
-            fetch('http://158.179.219.229:5000/Start', {
+            fetch(`http://158.179.219.229:5000/Start?container_name=${auth.user.name.toLowerCase()}-minecraft-1&username=${auth.user.name.toLowerCase()}`, {
               method: 'POST',
             })
               .then((response) => response.text())
@@ -39,7 +39,7 @@ const ImageComponent = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div>
-        <img src={offlineImage} alt="Offline" className="w-full h-auto " />
+        <img src={offlineImage} alt="Offline" className=" h-[500px]" />
       </div>
       <div className="mt-10">
         <div

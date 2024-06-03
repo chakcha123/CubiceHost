@@ -1,12 +1,12 @@
 
-  .button2 {
+.button {
     margin-left: 50%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     height: 40px; /* Normal state height */
     width: 150px; /* Normal state width */
-    background: #ff4444;
+    background: #00C851;
     border-radius: 20px;
     cursor: pointer;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -14,22 +14,21 @@
     overflow: hidden;
   }
 
-  .button2.active {
+  .button.active {
     height: 10px; /* Loading state height */
     width: 150px; /* Loading state width */
   }
 
-  .button2.active::before {
+  .button.active::before {
     border-radius: 20px; /* Loading state border-radius */
   }
 
-  .button2.active .content {
+  .button.active .content {
     transform: translateY(20px); /* Loading state translateY */
   }
 
 
-
-  .button2.active::before {
+  .button.active::before {
     animation: layer 3s ease-in-out forwards;
   }
 
@@ -39,7 +38,7 @@
     }
   }
 
-  .button2 .content {
+  .button .content {
     height: 100%;
     width: 100%;
     display: flex;
@@ -55,36 +54,17 @@
     font-size: 15px; /* Normal state font-size */
     font-weight: 450;
   }
-
   @media screen and (min-width:668px){
-    .button2::before {
+    .button::before {
         content: "";
         position: absolute;
         top: 0;
-        left: 100%;
+        left: -100%;
         height: 100%;
         width: 100%;
-        background: #CC0000;
+        background: #007E33;
         border-radius: 20px; /* Normal state border-radius */
         transition: all 3s ease-in-out;
       }
     }
-@media screen and (max-width:375px){
-#terminalFrame{
-  transform: scale(0.4);
-  transform-origin: 0 0;
-  width: 880px;
-  height:500px;
-
-}
-}
-@media screen and (min-width:376px) and (max-width:415px){
-  #terminalFrame{
-    transform: scale(0.5);
-    transform-origin: 0 0;
-    width: 780px;
-    height:450px;
-
-  }
-  }
 
