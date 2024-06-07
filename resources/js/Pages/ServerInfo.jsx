@@ -38,12 +38,12 @@ export default function ServerInfo({ auth }) {
             <div className="container mx-auto">
                 <h2 className="text-xl font-bold mb-2">Server Status</h2>
                 {bedrockPort && (
-                    <p className="bg-gray-200 dark:bg-gray-700 text-sm rounded-full px-4 py-2">
+                    <p className={ `${!isDarkMode ?'bg-gray-200' :' bg-gray-700'} text-sm rounded-full px-4 py-2`}>
                         Bedrock: 158.179.219.229:{bedrockPort}
                     </p>
                 )}
                 {javaPort && (
-                    <p className="bg-gray-200 dark:bg-gray-700 text-sm rounded-full px-4 py-2 mt-2">
+                    <p className={ `${!isDarkMode ?'bg-gray-200' :' bg-gray-700'} text-sm rounded-full px-4 py-2 mt-2`}>
                         Java: 158.179.219.229:{javaPort}
                     </p>
                 )}
@@ -52,6 +52,4 @@ export default function ServerInfo({ auth }) {
 
     );
 }
-
-
 
